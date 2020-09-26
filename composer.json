@@ -1,0 +1,43 @@
+{
+    "name": "rockhopsoft/rockhopsoftcom",
+    "description": "Survloop is a Laravel-based engine for designing a database and creating a mobile-friendly user interface to fill it.",
+    "keywords": [
+    	"laravel", 
+    	"Survloop", 
+    	"survey", 
+    	"database designer", 
+    	"user experience", 
+    	"forms", 
+    	"mobile friendly", 
+    	"mobile first", 
+    	"branching tree",
+    	"nodes"
+    ],
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Morgan Lesko",
+            "homepage": "https://github.com/rockhopsoft/survlooporg",
+            "email": "rockhoppers@runbox.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "rockhopsoft/survloop": "^0.2.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "RockHopSoft\\RockHopSoftCom\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "RockHopSoft\\RockHopSoftCom\\RockHopSoftComServiceProvider"
+            ],
+            "aliases": {
+                "RockHopSoftCom": "RockHopSoft\\RockHopSoftCom\\RockHopSoftComFacade"
+            }
+        }
+    }
+}
