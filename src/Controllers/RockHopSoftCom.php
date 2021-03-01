@@ -50,7 +50,7 @@ class RockHopSoftCom extends TreeSurvForm
         return $ret;
     }
     
-    protected function customResponses($nID, &$curr)
+    protected function customResponses(&$curr)
     {
         if ($nID == 37) {
             
