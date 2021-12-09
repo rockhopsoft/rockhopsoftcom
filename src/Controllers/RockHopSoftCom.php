@@ -27,91 +27,94 @@ class RockHopSoftCom extends TreeSurvForm
     {
         return true;
     }
-    
+
     // Initializing a bunch of things which are not [yet] automatically determined by the software
     protected function loadExtra()
     {
         return true;
     }
     */
-    
+
     protected function customNodePrint(&$curr = null)
     {
         $ret = '';
-        $nID = $curr->nID;
-        $docuNavs = [641, 2386, 441, 759, 999, 1081, 1793, 2281, 2681, 3088, 3099];
-        if ($nID == 77) {
-            $ret .= $this->gatherInstallStatTbl1($nID);
-        } elseif ($nID == 81) {
-            $ret .= $this->gatherInstallStatTbl2($nID);
-        } elseif (in_array($nID, $docuNavs)) {
-            $ret .= $this->printDocumentationNav($nID);
+        $docuNavs = [  ];
+        if (in_array($curr->nID, $docuNavs)) {
+            $ret .= $this->printDocumentationNav($curr->nID);
+        } elseif ($curr->nID == 46) {
+            $ret .= view('vendor.rockhopsoftcom.nodes.46-donate')->render();
+
+        } elseif ($curr->nID == 36) {
+            $ret .= view('vendor.rockhopsoftcom.nodes.36-instruct-create-super-user')->render();
+        } elseif ($curr->nID == 38) {
+            $ret .= view('vendor.rockhopsoftcom.nodes.38-instruct-install-jitsi')->render();
+
         }
         return $ret;
     }
-    
+
     protected function customResponses(&$curr)
     {
-        if ($nID == 37) {
-            
+        if ($curr->nID == 37) {
+
         }
         return $curr;
     }
-    
+
     protected function postNodePublicCustom(&$curr)
-    { 
+    {
         if (empty($tmpSubTier)) {
             $tmpSubTier = $this->loadNodeSubTier($curr->nID);
         }
         list($curr->tbl, $curr->fld) = $this->allNodes[$curr->nID]->getTblFld();
         if ($curr->nID == 37) {
-            
+
         }
         return false; // false to continue standard post processing
     }
-    
+
     public function ajaxChecksCustom(Request $request, $type = '')
     {
         if ($type == 'something-cool') {
-            
+
         }
         return '';
     }
-    
-    // returns an array of overrides for ($currNodeSessionData, ???... 
+
+    // returns an array of overrides for ($currNodeSessionData, ???...
     protected function printNodeSessDataOverride(&$curr)
     {
         if (sizeof($this->sessData->dataSets) == 0) {
             return [];
         }
         if ($curr->nID == 37) {
-            
+
         }
         return [];
     }
-    
+
     protected function checkNodeConditionsCustom($nID, $condition = '')
     {
         if ($condition == '#SomethingCool') {
-            
+
         }
         return -1;
     }
-    
+
     protected function printDocumentationNav($nID)
     {
         $docuNav = [
             [
-                'How To Install Survloop', 
+                'How To Install Survloop',
                 [
                     [
-                        '/how-to-install-survloop', 
+                        '/how-to-install-survloop',
                         'Install Survloop'
                     ],[
-                        '/how-to-install-laravel-on-an-ubuntu-server', 
+                        '/how-to-install-laravel-on-an-ubuntu-server',
                         'Install Laravel on Ubuntu Server'
                     ],[
-                        '/how-to-install-laravel-locally-on-a-mac', 
+                        '/how-to-install-laravel-locally-on-a-mac',
                         'Install Laravel locally <nobr>on a Mac</nobr>'
                     ]
                 ]
@@ -120,28 +123,28 @@ class RockHopSoftCom extends TreeSurvForm
                 'Survloop Codebase Orientation',
                 [
                     [
-                        '/introduction-to-survloop-codebase', 
+                        '/introduction-to-survloop-codebase',
                         'What Is Survloop?'
                     ],[
-                        '/package-files-folders-classes', 
+                        '/package-files-folders-classes',
                         'Folders, Files, & Classes'
                     ],[
-                        '/developer-work-flows', 
+                        '/developer-work-flows',
                         'Developer Work Flows'
                     ],[
-                        '/how-a-basic-page-loads-with-survloop', 
+                        '/how-a-basic-page-loads-with-survloop',
                         'How A Basic Page Loads'
                     ]
                 ]
             ]
         ];
         return view(
-            'vendor.rockhopsoftcom.inc-documentation-navigation', 
+            'vendor.rockhopsoftcom.inc-documentation-navigation',
             [
                 "docuNav"  => $docuNav,
                 "currPage" => $this->getCurrPage()
             ]
         )->render();
     }
-    
+
 }
