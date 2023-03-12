@@ -1,4 +1,5 @@
-<!-- resources/views/vendor/survlooporg/nodes/38-instruct-install-jitsi.blade.php -->
+<!-- resources/views/vendor/rockhopsoftcom/nodes/
+	38-instruct-install-jitsi.blade.php -->
 
 <h5 class="slBlueDark">2) Install Jitsi-Meet</h5>
 <p>As the super user you created, enter 'sudo su' mode:</p>

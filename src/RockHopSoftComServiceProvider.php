@@ -18,15 +18,18 @@ class RockHopSoftComServiceProvider extends ServiceProvider
               __DIR__ . '/Views'
                   => base_path('resources/views/vendor/rockhopsoftcom'),
 
-              __DIR__ . '/Uploads' 
+              __DIR__ . '/Uploads'
                   => base_path('public/rockhopsoftcom'),
-              
+
+              __DIR__.'/Models'
+                  => base_path('app/Models'),
+
 //              __DIR__ . '/Database/' . $dbMig . '.php'
 //                  => base_path('database/migrations/' . $dbMig . '.php'),
 
-              __DIR__ .'/Database/RockHopSoftComSeeder.php' 
+              __DIR__ .'/Database/RockHopSoftComSeeder.php'
                   => base_path('database/seeders/RockHopSoftComSeeder.php')
-                  
+
         ]);
     }
 }

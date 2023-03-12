@@ -16,10 +16,10 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\SLIInstallations;
 use App\Models\SLIInstallStats;
+use RockHopSoft\RockHopSoftCom\Controllers\RockHopCustomPrints;
 use RockHopSoft\Survloop\Controllers\Globals\Globals;
-use RockHopSoft\Survloop\Controllers\Tree\TreeSurvForm;
 
-class RockHopSoftCom extends TreeSurvForm
+class RockHopSoftCom extends RockHopCustomPrints
 {
     /*
     // Initializing a bunch of things which are not [yet] automatically determined by the software
@@ -41,13 +41,53 @@ class RockHopSoftCom extends TreeSurvForm
         $docuNavs = [  ];
         if (in_array($curr->nID, $docuNavs)) {
             $ret .= $this->printDocumentationNav($curr->nID);
-        } elseif ($curr->nID == 46) {
+        } elseif (in_array($curr->nID, [46, 101])) {
             $ret .= view('vendor.rockhopsoftcom.nodes.46-donate')->render();
 
         } elseif ($curr->nID == 36) {
-            $ret .= view('vendor.rockhopsoftcom.nodes.36-instruct-create-super-user')->render();
+            $ret .= rock()->getRockBlade('36-instruct-create-super-user');
         } elseif ($curr->nID == 38) {
-            $ret .= view('vendor.rockhopsoftcom.nodes.38-instruct-install-jitsi')->render();
+            $ret .= rock()->getRockBlade('38-instruct-install-jitsi');
+        } elseif ($curr->nID == 89) {
+            $ret .= rock()->getRockBlade('89-instruct-install-mattermost');
+
+
+        } elseif ($curr->nID == 70) {
+            $ret .= $this->osBlockWrapSolOffer(797); // ONLYOFFICE
+        } elseif ($curr->nID == 160) {
+            $ret .= $this->osBlockWrapSolOffer(804); // Passbolt
+        } elseif ($curr->nID == 77) {
+            $ret .= $this->osBlockWrapSolOffer(799); // Jitsi
+        } elseif ($curr->nID == 80) {
+            $ret .= $this->osBlockWrapSolOffer(798); // Mattermost
+        } elseif ($curr->nID == 71) {
+            $ret .= $this->osBlockWrapSolOffer(800, 2); // WordPress
+        } elseif ($curr->nID == 79) {
+            $ret .= $this->osBlockWrapSolOffer(802, 2); // Email
+        } elseif ($curr->nID == 72) {
+            $ret .= rock()->getRockBlade('72-server-mgmt-services');
+        } elseif (in_array($curr->nID, [91, 172])) {
+            $ret .= rock()->getRockBlade('91-about-morgan-blurb');
+
+        } elseif ($curr->nID == 105) {
+            $this->chkQuoteTbls();
+        } elseif ($curr->nID == 122) {
+            $this->quoteSurvComplete();
+        } elseif ($curr->nID == 159) {
+            $ret .= $this->quoteAutoCloud();
+        } elseif ($curr->nID == 186) {
+            $ret .= $this->quoteAdmToolkit();
+
+        } elseif ($curr->nID == 168) {
+            $ret .= $this->quoteInquriesMgmt();
+        } elseif ($curr->nID == 191) {
+            $ret .= $this->printClientMgmt();
+        } elseif ($curr->nID == 206) {
+            if (slreq()->has('addLoopNID')
+                && intVal(slreq()->get('addLoopNID')) > 0) {
+                $this->newLoopItem(slreq()->get('addLoopNID'));
+            }
+
 
         }
         return $ret;
@@ -101,50 +141,14 @@ class RockHopSoftCom extends TreeSurvForm
         return -1;
     }
 
-    protected function printDocumentationNav($nID)
+    protected function getTableRecLabelCustom($tbl, $rec = [], $ind = -3)
     {
-        $docuNav = [
-            [
-                'How To Install Survloop',
-                [
-                    [
-                        '/how-to-install-survloop',
-                        'Install Survloop'
-                    ],[
-                        '/how-to-install-laravel-on-an-ubuntu-server',
-                        'Install Laravel on Ubuntu Server'
-                    ],[
-                        '/how-to-install-laravel-locally-on-a-mac',
-                        'Install Laravel locally <nobr>on a Mac</nobr>'
-                    ]
-                ]
-            ],
-            [
-                'Survloop Codebase Orientation',
-                [
-                    [
-                        '/introduction-to-survloop-codebase',
-                        'What Is Survloop?'
-                    ],[
-                        '/package-files-folders-classes',
-                        'Folders, Files, & Classes'
-                    ],[
-                        '/developer-work-flows',
-                        'Developer Work Flows'
-                    ],[
-                        '/how-a-basic-page-loads-with-survloop',
-                        'How A Basic Page Loads'
-                    ]
-                ]
-            ]
-        ];
-        return view(
-            'vendor.rockhopsoftcom.inc-documentation-navigation',
-            [
-                "docuNav"  => $docuNav,
-                "currPage" => $this->getCurrPage()
-            ]
-        )->render();
+        if (in_array($tbl, ['quote_big_tech', 'Big Tech Platforms'])
+            && $rec
+            && isset($rec->big_tech_def)) {
+            return sldefs()->getVal('Big Tech Platforms', $rec->big_tech_def);
+        }
+        return '';
     }
 
 }
