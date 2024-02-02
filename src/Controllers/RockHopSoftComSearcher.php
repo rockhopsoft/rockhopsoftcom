@@ -9,10 +9,10 @@
   */
 namespace RockHopSoft\RockHopSoftCom\Controllers;
 
-use RockHopSoft\Survloop\Controllers\Searcher;
+use RockHopSoft\Survloop\Controllers\Searcher\Searcher;
 
 class RockHopSoftComSearcher extends Searcher
 {
-    
-    
+
+
 }
