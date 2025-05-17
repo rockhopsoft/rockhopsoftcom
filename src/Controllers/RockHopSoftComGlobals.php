@@ -20,7 +20,7 @@ class RockHopSoftComGlobals
     {
         if (!$this->sols || $this->sols === null) {
             $this->sols = new SolutionWraps;
-            $defs  = [ 797, 798, 799, 800, 804 ];
+            $defs  = [ 852, 797, 798, 799, 800, 804 ];
             foreach ($defs as $def) {
                 $this->sols->addSolDef($def);
             }
@@ -30,7 +30,9 @@ class RockHopSoftComGlobals
 
     public function solDefPrintOffer($solDef)
     {
-        if ($solDef == 797) {       // ONLYOFFICE
+        if ($solDef == 852) {       // NextCloud
+            return $this->getRockOfferBlade('server-support-nextcloud');
+        } elseif ($solDef == 797) { // ONLYOFFICE
             return $this->getRockOfferBlade('server-support-onlyoffice');
         } elseif ($solDef == 798) { // Mattermost
             return $this->getRockOfferBlade('server-support-mattermost');

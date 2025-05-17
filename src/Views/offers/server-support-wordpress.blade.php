@@ -1,15 +1,16 @@
 <!-- generated from resources/views/vendor/rockhopsoftcom/offers/
     server-support-wordpress -->
-<div class="container">
+<div class="nodeAnchor"><a name="wordpress" id="wordpress"></a></div>
 <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-4 pT30 pB30">
         <div class="pB15"><a href="https://wordpress.org/" target="_blank"><img src="/rockhopsoftcom/wordpress-logo.png" border="0" style="width: 100%; max-width: 500px;" alt="WordPress logo" title="WordPress logo"></a></div>
         <h4><a href="https://wordpress.org/" target="_blank"
             >wordpress.org</a></h4>
         <p>Powers <a href="https://kinsta.com/wordpress-market-share/"
             target="_blank">43%</a> of all websites on internet</p>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-7 pT30 pB30">
         <iframe width="100%" height="315"
             src="https://www.youtube.com/embed/0jH4jaKBhc4"
             title="YouTube video player" frameborder="0"
@@ -21,17 +22,17 @@
 
 <div class="osDesc">
 <div class="row">
-<div class="col-md-7 pT15">
+<div class="col-lg-7 pT15">
 <h4 class="bld">Collaboration Solutions For:</h4>
 <table class="table table-striped">
 <tr>
 <td>Click for Documentation</td>
-<td>YouTube</td>
+<td class="taC">YouTube</td>
 </tr>
 <tr>
 <td><a href="https://learn.wordpress.org/" target="_blank"
     >Website Content Management</a></td>
-<td><a href="https://www.youtube.com/results?search_query=how+to+use+WordPress+tutorial" target="_blank" class="mL15"><i class="fa-brands fa-youtube"></i></a></td>
+<td class="taC"><a href="https://www.youtube.com/results?search_query=how+to+use+WordPress+tutorial" target="_blank"><i class="fa-brands fa-youtube"></i></a></td>
 </tr>
 </table>
 
@@ -43,8 +44,7 @@ that lets you build your own website or blog, and maintain the content.
 </p>
 
 </div>
-<div class="col-md-1"></div>
-<div class="col-md-4 pT15">
+<div class="col-lg-5 pT15">
 
 <div class="slCard round30">
 <h4 class="bld">An Alternative To:</h4>
@@ -62,7 +62,7 @@ that lets you build your own website or blog, and maintain the content.
 
 <div class="pT30">
     <div class="row">
-        <div class="col-md-5 pT15 pB15">
+        <div class="col-lg-5 pT15 pB15">
           <div class="osCostWrap">
             <table border="0" class="w100">
             <tr class="brdBotWht">
@@ -91,8 +91,8 @@ that lets you build your own website or blog, and maintain the content.
             <li>$1.20 per month for automated weekly backups</li>
             </ul>
         </div>
-        <div class="col-md-1"></div>
-        <div class="col-md-6 pT15 pB15">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-5 pT15 pB15">
 <h5><i>More WordPress Resources:</i></h5>
 <div class="osLinks">
 <a href="https://wordpress.org/documentation/" target="_blank"
@@ -104,7 +104,4 @@ that lets you build your own website or blog, and maintain the content.
 </div>
         </div>
     </div>
-</div>
-
-
 </div>

@@ -20,6 +20,7 @@ class RHQuoteRequest extends Model
         'qr_unique_str',
         'qr_ip_addy',
         'qr_is_mobile',
+        'qr_honey_pot',
         'qr_body',
         'qr_want_private_cloud',
         'qr_want_custom_software',
@@ -35,6 +36,12 @@ class RHQuoteRequest extends Model
         'qr_use_freq_phones',
         'qr_date_replied',
         'qr_notes',
+        'qr_budget',
+        'qr_captcha_challenge',
+        'qr_captcha_answer',
+        'qr_appointment',
+        'qr_appointment_timezone',
+        'qr_appoint_notes',
     ];
 
     // END Survloop auto-generated portion of Model

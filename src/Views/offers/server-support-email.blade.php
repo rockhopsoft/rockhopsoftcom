@@ -1,16 +1,16 @@
 <!-- generated from resources/views/vendor/rockhopsoftcom/offers/
     server-support-email.blade.php -->
-<div class="container">
+<div class="nodeAnchor"><a name="email" id="email"></a></div>
 <div class="row">
 <div class="col-lg-2"></div>
 <div class="col-lg-8">
     <h2 style="font-size: 45px;"><b>
-        Email Accounts for Your Organization
+        Email Accounts for <nobr>Your Organization</nobr>
     </b></h2>
 
     <div class="osDesc">
         <div class="row">
-            <div class="col-md-7 pB30">
+            <div class="col-md-5 pB30">
                 <p>
                 Because the spam-filled email ecosystem is a complex arms race,
                 Rockhopper has better things to focus on.
@@ -19,14 +19,14 @@
                 But we are happy to help get your email out of Google's clutches.
                 </p>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-7 osDescImgWrap">
                 <div class="w100 pB30 slGrey taR" style="font-size: 16px;">
                     <img src="/rockhopsoftcom/google-dont-be-evil.jpg"
-                        border="0" class="w100">
+                        border="0" class="w100 round15 brdRhs3">
                     <br />Reference:
                     <a href="https://en.wikipedia.org/wiki/Don%27t_be_evil"
                         target="_blank" class="txtInfo" style="font-size: 16px;"
-                        >Google's early motto, "Don't Be Evil"</a>
+                        >Google's early motto, <nobr>"Don't Be Evil"</nobr></a>
                 </div>
             </div>
         </div>
@@ -36,6 +36,7 @@
             <tr class="brdBotWht">
                 <td colspan="2" class="taL">
                     Any project with Rockhopper's server management services
+                    <br /> - OR custom web-based software - <br />
                     includes the setup and migration of up to 10
                     <nobr>email accounts!</nobr>
                 </td>
@@ -45,7 +46,7 @@
                     - OR -<br >
                     Standalone Email Setup & Migration Fee
                 </td>
-                <td class="taR"><br >$60.00</td>
+                <td class="taR"><br >$100.00</td>
             </tr>
             </table>
         </div>
@@ -67,12 +68,13 @@
                 </p>
                 <p>
                     For reference, Gmail for business costs
-                    <nobr>$6.00 per user</nobr> <nobr>per month</nobr>
+                    <nobr>$8.40 per user</nobr> <nobr>per month</nobr>
                     <nobr>for 30GB.</nobr>
                     <span class="slGrey">
-                        <nobr>Email pricing</nobr> as of <nobr>January 2023.</nobr>
+                        <nobr>Email pricing</nobr> as of <nobr>April 2025.</nobr>
                     </span>
                 </p>
+                <!---
                 <p>
                 If you choose to use ONLYOFFICE, then most email providers
                 will let us download emails to your ONLYOFFICE server.
@@ -80,10 +82,11 @@
                 by the user. Instead, we just boost the storage on your server
                 for all email accounts collectively.
                 </p>
+                --->
             </div>
             <div class="col-md-1"></div>
-            <div class="col-md-5">
-                <div class="w100 pT30 pB30 slGrey taR" style="font-size: 16px;">
+            <div class="col-md-5 osDescImgWrap">
+                <div class="w100 pT30 pB30 slGrey" style="font-size: 16px;">
                     <img src="/rockhopsoftcom/exit-the-panopticon.jpg"
                         border="0" class="w100">
                     <br />Reference:
@@ -111,11 +114,11 @@
                 <ul>
                 <li>Based in Norway</li>
                 <li><a href="https://runbox.com/price-plans/" target="_blank"
-                    >$1.66 per month for 2GB for the first user,
-                    then $0.66 per user per month</a><br />
-                    or $1.25-$2.91 for 10GB, $2.08-$4.16 for 25GB...</li>
+                    >$19.95 per year for 2GB for the first user,
+                    then $7.95 per user per year</a><br />
+                    or $34.95/yr for 10GB, $49.95/yr for 25GB...</li>
                 <li>Webmail. Can be accessed through desktop clients.</li>
-                <li>Mail can be pulled into your ONLYOFFICE server!</li>
+                <!--- <li>Mail can be pulled into your ONLYOFFICE server!</li> --->
                 <li><a href="https://en.wikipedia.org/wiki/Runbox" target="_blank"
                     ><i class="fa-brands fa-wikipedia-w mRn3"></i>ikipedia</a></li>
                 <li><a href="https://www.youtube.com/results?search_query=how+to+use+Runbox+mail"
@@ -146,11 +149,11 @@
                 <li>Based in Switzerland</li>
                 <li><a href="https://proton.me/business/plans" target="_blank"
                     >$6.99 per user per month for 15GB</a><br />
-                    or $10.99 for 500GB</li>
+                    or $9.99 for 50GB</li>
                 <li>Highly secure webmail, and apps for Android and iOS mobile devices.</li>
                 <li><a href="https://proton.me/mail/bridge" target="_blank"
                     >Can be accessed through desktop clients.</a>
-                But cannot be accessed within ONLYOFFICE.</li>
+                But cannot be accessed most email clients.</li>
                 <li>Runs largely open source software.</li>
                 <li><a href="https://en.wikipedia.org/wiki/Protonmail" target="_blank"
                     ><i class="fa-brands fa-wikipedia-w mRn3"></i>ikipedia</a></li>
@@ -181,10 +184,10 @@
                 <ul>
                 <li>Based in Belgium</li>
                 <li><a href="https://mailfence.com/#pricing" target="_blank"
-                    >$2.50 per user per month for 5GB</a><br />
-                    or $7.50 for 20GB, $25.00 for 50GB</li>
+                    >$3.50 per user per month for 40GB</a><br />
+                    or $9.50 for 78GB, $29.00 for 225GB</li>
                 <li>Webmail. Can be accessed through desktop clients.</li>
-                <li>Mail can be pulled into your ONLYOFFICE server!</li>
+                <!--- <li>Mail can be pulled into your ONLYOFFICE server!</li> --->
                 <li><a href="https://en.wikipedia.org/wiki/Mailfence" target="_blank"
                     ><i class="fa-brands fa-wikipedia-w mRn3"></i>ikipedia</a></li>
                 <li><a href="https://www.youtube.com/results?search_query=how+to+use+Mailfence"
@@ -214,10 +217,10 @@
                 <ul>
                 <li>Based in India, with data centers in the U.S.</li>
                 <li><a href="https://www.zoho.com/mail/zohomail-pricing.html" target="_blank"
-                    >$1.00 per user per month for 5GB</a><br />
-                    or $1.25 for 10GB, $4.00 for 50GB</li>
+                    >$1.00 per user per month for 10GB</a>,<br />
+                    $4.00 for 50GB</li>
                 <li>Webmail. Can be accessed through desktop clients.</li>
-                <li>Mail can be pulled into your ONLYOFFICE server!</li>
+                <!--- <li>Mail can be pulled into your ONLYOFFICE server!</li> --->
                 <li><a href="https://en.wikipedia.org/wiki/Zoho_Corporation" target="_blank"
                     ><i class="fa-brands fa-wikipedia-w mRn3"></i>ikipedia</a></li>
                 <li><a href="https://www.youtube.com/results?search_query=how+to+use+Zoho+mail"
@@ -234,4 +237,14 @@
 </div>
 <div class="col-lg-2"></div>
 </div>
-</div>
+
+<style>
+.osDescImgWrap {
+    padding: 15px;
+}
+@media (min-width: 768px)  {
+    .osDescImgWrap {
+        padding: 0px;
+    }
+}
+</style>

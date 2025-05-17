@@ -52,6 +52,10 @@ class RockHopSoftCom extends RockHopCustomPrints
             $ret .= rock()->getRockBlade('89-instruct-install-mattermost');
 
 
+        } elseif ($curr->nID == 252) {
+            $this->addHshoosClouds();
+        } elseif ($curr->nID == 251) {
+            $ret .= $this->osBlockWrapSolOffer(852); // NextCloud
         } elseif ($curr->nID == 70) {
             $ret .= $this->osBlockWrapSolOffer(797); // ONLYOFFICE
         } elseif ($curr->nID == 160) {
@@ -69,6 +73,10 @@ class RockHopSoftCom extends RockHopCustomPrints
         } elseif (in_array($curr->nID, [91, 172])) {
             $ret .= rock()->getRockBlade('91-about-morgan-blurb');
 
+        } elseif ($curr->nID == 225) {
+            $ret .= $this->printRockHopCaptcha();
+        } elseif ($curr->nID == 227) {
+            $ret .= $this->printRockHopApptCalen();
         } elseif ($curr->nID == 105) {
             $this->chkQuoteTbls();
         } elseif ($curr->nID == 122) {
@@ -77,6 +85,9 @@ class RockHopSoftCom extends RockHopCustomPrints
             $ret .= $this->quoteAutoCloud();
         } elseif ($curr->nID == 186) {
             $ret .= $this->quoteAdmToolkit();
+
+        } elseif ($curr->nID == 230) {
+            $ret .= $this->printAutoQuoteHeader();
 
         } elseif ($curr->nID == 168) {
             $ret .= $this->quoteInquriesMgmt();
@@ -87,7 +98,6 @@ class RockHopSoftCom extends RockHopCustomPrints
                 && intVal(slreq()->get('addLoopNID')) > 0) {
                 $this->newLoopItem(slreq()->get('addLoopNID'));
             }
-
 
         }
         return $ret;
@@ -135,8 +145,8 @@ class RockHopSoftCom extends RockHopCustomPrints
 
     protected function checkNodeConditionsCustom($nID, $condition = '')
     {
-        if ($condition == '#SomethingCool') {
-
+        if ($condition == '#PassedRockHopCaptcha') {
+            return ($this->passedCaptcha() ? 1 : 0);
         }
         return -1;
     }

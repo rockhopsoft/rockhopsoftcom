@@ -1,7 +1,7 @@
 <!-- generated from resources/views/vendor/rockhopsoftcom/nodes/
     159-auto-quote-cloud.blade.php -->
 
-<h1>Instant Quote for Your Private Cloud</h1>
+<h2 class="slBlueDark">Instant Quote for Your Private Cloud</h2>
 <p class="rockTxtSize">
 Based on your responses alone, we would
 likely recommend the solutions described below.
