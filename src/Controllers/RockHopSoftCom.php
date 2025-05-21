@@ -41,7 +41,7 @@ class RockHopSoftCom extends RockHopCustomPrints
         $docuNavs = [  ];
         if (in_array($curr->nID, $docuNavs)) {
             $ret .= $this->printDocumentationNav($curr->nID);
-        } elseif (in_array($curr->nID, [46, 101])) {
+        } elseif (in_array($curr->nID, [101])) {
             $ret .= view('vendor.rockhopsoftcom.nodes.46-donate')->render();
 
         } elseif ($curr->nID == 36) {
@@ -113,12 +113,13 @@ class RockHopSoftCom extends RockHopCustomPrints
 
     protected function postNodePublicCustom(&$curr)
     {
-        if (empty($tmpSubTier)) {
-            $tmpSubTier = $this->loadNodeSubTier($curr->nID);
-        }
-        list($curr->tbl, $curr->fld) = $this->allNodes[$curr->nID]->getTblFld();
-        if ($curr->nID == 37) {
-
+        $tbl = 'quote_request';
+        // list($curr->tbl, $curr->fld) = $this->allNodes[$curr->nID]->getTblFld();
+        if ($curr->nID == 227 && isset($this->sessData->dataSets[$tbl])) {
+            $val = ((slreq()->has('n227fld')) ? slreq()->get('n227fld') : null);
+            $this->sessData->dataSets[$tbl][0]->qr_appointment = $val;
+            $this->sessData->dataSets[$tbl][0]->save();
+            return true;
         }
         return false; // false to continue standard post processing
     }

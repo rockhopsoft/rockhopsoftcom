@@ -39,10 +39,10 @@ providing accurate recommendations and final quotes.
     <div class="row mT30">
         <div class="col-lg-5">
             <div class="w100 bgFnt p15 mB30">
+                <h3 class="fL pB15">One-Time Setup</h3>
                 <h3 class="fR pR5">${{
                     ceil($sols->totalOfferFeesOneTime())
                 }}</h3>
-                <h3 class="fL pB15">One-Time Setup Costs</h3>
                 <div class="fC"></div>
                 <table border="0" class="table w100">
         @foreach ($sols->sols as $sol)
@@ -84,10 +84,10 @@ providing accurate recommendations and final quotes.
         <div class="col-lg-2"></div>
         <div class="col-lg-5">
             <div class="w100 bgFnt p15 mB30">
+                <h3 class="fL pB15">Monthly Costs</h3>
                 <h3 class="fR pR5">${{
                     ceil($sols->totalFeesMonthly())
                 }}</h3>
-                <h3 class="fL pB15">Monthly Costs</h3>
                 <div class="fC"></div>
                 <table border="0" class="table w100">
         @foreach ($sols->sols as $sol)

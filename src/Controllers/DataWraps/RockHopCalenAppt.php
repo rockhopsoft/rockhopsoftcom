@@ -42,12 +42,12 @@ class RockHopCalenAppt
 
     public function printTime()
     {
-        return date("g:i a", $this->printTime);
+        return date("g:ia", $this->printTime);
     }
 
     public function printTimeCurrent()
     {
-        return date("n/j g:i a", $this->printTime);
+        return date("n/j g:ia", $this->printTime);
     }
 
     public function printLogBlock($timespan = 'day')

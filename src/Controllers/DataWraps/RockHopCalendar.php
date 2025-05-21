@@ -56,19 +56,10 @@ class RockHopCalendar extends SurvCalendar
         return '<div class="fC"></div>';
     }
 
-    public function loadAppts()
-    {
-        $this->appts = [
-            [ '2025-05-19 14:30:00', '2025-05-19 16:59:59' ],
-            [ '2025-05-26 16:00:00', '2025-05-26 16:59:59' ]
-        ];
-
-    }
-
     public function getOpenings()
     {
-        $this->loadAppts();
-        $timeZoneOffset = $this->getCurrTimeZoneOffset();
+        $this->loadAppts(1);
+        $offset = $this->getCurrTimeZoneOffset();
         $currApptDay = $this->addToCurrDay($this->getToday(), 1);
         $cutoff = mktime(0, 0, 0, date("m", $currApptDay),
             intVal(date("d", $currApptDay))+45, date("Y", $currApptDay));
@@ -80,15 +71,12 @@ class RockHopCalendar extends SurvCalendar
                 $startTime = strtotime($str . $this->officeHours[$dayOfWk][0]);
                 $endTime   = strtotime($str . $this->officeHours[$dayOfWk][1]);
                 $currAppt = $startTime;
-//echo 'getOpenings() currAppt: ' . date("Y-m-d H:i", $currAppt) . ' - getZoneHourAdjust(' . $this->currTimeZone . ') timeZoneOffset = ' . $timeZoneOffset . '<br />';
+//echo 'getOpenings() currAppt: ' . date("Y-m-d H:i", $currAppt) . ' - getZoneHourAdjust(' . $this->currTimeZone . ') offset = ' . $offset . '<br />';
                 while ($currAppt <= $endTime) {
                     if ($this->checkOpening($currAppt)) {
-                        $printAppt = $this
-                            ->addToCurrHours($currAppt, $timeZoneOffset);
-                        $this->days[$currApptDay][] = new RockHopCalenAppt(
-                            $currAppt,
-                            $printAppt
-                        );
+                        $printAppt = $this->addToCurrHours($currAppt, $offset);
+                        $this->days[$currApptDay][]
+                            = new RockHopCalenAppt($currAppt, $printAppt);
                     }
                     $currAppt = $this->incrementOpeningTime($currAppt);
                 }

@@ -14,6 +14,7 @@ use App\Models\RHQuoteRequest;
 use App\Models\RHQuoteSolution;
 use RockHopSoft\RockHopSoftCom\Controllers\DataWraps\BigTechWraps;
 use RockHopSoft\RockHopSoftCom\Controllers\DataWraps\InstantQuoteWrap;
+use RockHopSoft\RockHopSoftCom\Controllers\DataWraps\RockHopCalendar;
 use RockHopSoft\RockHopSoftCom\Controllers\DataWraps\SolutionWraps;
 use RockHopSoft\Survloop\Controllers\Tree\TreeSurvForm;
 
@@ -50,10 +51,33 @@ class RockHopQuotes extends TreeSurvForm
 
     protected function quoteSurvComplete()
     {
-        if (isset($this->sessData->dataSets["quote_request"])) {
-            $this->sessData->dataSets["quote_request"][0]->qr_submitted
+        $t = 'quote_request';
+        if (isset($this->sessData->dataSets[$t])) {
+            if (isset($this->sessData->dataSets[$t][0]->qr_appointment)
+                && trim($this->sessData->dataSets[$t][0]->qr_appointment) !=''){
+                $quote = $this->sessData->dataSets[$t][0];
+                $start = strtotime($this->sessData->dataSets[$t][0]
+                    ->qr_appointment);
+                $end = mktime(date("H", $start), intVal(date("i", $start))+75,
+                    0, date("m", $start), date("d", $start), date("Y", $start));
+                $start = mktime(date("H", $start), intVal(date("i", $start))-15,
+                    0, date("m", $start), date("d", $start), date("Y", $start));
+                $desc = '<a href="' .sl()->sysOpt('app-url'). '/auto-quote?cid='
+                    . $quote->qr_id . '&recalc=1&refresh=1" target="_blank">'
+                    . 'Inquiry #' . $quote->qr_id . '</a>';
+                if (isset($quote->qr_name) && trim($quote->qr_name) != '') {
+                    $desc .= ' <b>' . $quote->qr_name . '</b> ';
+                }
+                if (isset($quote->qr_website) && trim($quote->qr_website) !=''){
+                    $desc .= ' <a href="' . $quote->qr_website
+                        . '" target="_blank">' . $quote->qr_website . '</a> ';
+                }
+                $calen = new RockHopCalendar;
+                $calen->userApptBook($start, $end, 1, $desc);
+            }
+            $this->sessData->dataSets[$t][0]->qr_submitted
                 = sl()->getServerDateNow();
-            $this->sessData->dataSets["quote_request"][0]->save();
+            $this->sessData->dataSets[$t][0]->save();
         }
     }
 

@@ -83,20 +83,46 @@ class RockHopCustomPrints extends RockHopClients
         return $challenge["printed"];
     }
 
+    protected function getQuoteApptTimeZone($quote)
+    {
+        $apptTimeZone = sl()->sysDefaultTimeZoneID();
+        if (isset($quote->qr_appointment_timezone)
+            && intVal($quote->qr_appointment_timezone) > 0) {
+            $apptTimeZone = intVal($quote->qr_appointment_timezone);
+        }
+        return $apptTimeZone;
+    }
+
+    protected function printQuoteApptTime($quote)
+    {
+        $printTime = null;
+        if (isset($quote->qr_appointment) && trim($quote->qr_appointment) !=''){
+            $apptTimeZone = $this->getQuoteApptTimeZone($quote);
+            $calen = new RockHopCalendar($apptTimeZone);
+            $apptTime = strtotime($quote->qr_appointment);
+            $printTime = $calen->applyCurrTimeZoneOffset($apptTime);
+        }
+        return $printTime;
+    }
+
     protected function printRockHopApptCalen()
     {
         if ($this->failedCaptcha()) {
-            return '<h3 class="slRedDark">Sorry, You Failed Passed '
-                . 'Our Unique <nobr>Human Challenge.</nbor> '
-                . 'Go back to <nobr>try again.</nobr></h3>'
-                . '<h3 class="slRedDark">So you can\'t immediately '
-                . 'schedule an appointment <nobr>right now.</nobr></h3>';
+            $view = 'vendor.rockhopsoftcom.nodes.227-schedule-captcha-blocked';
+            return view($view)->render();
         }
-        $calen = new RockHopCalendar;
+        $quote = $this->sessData->dataSets["quote_request"][0];
+        $apptTimeZone = $this->getQuoteApptTimeZone($quote);
+        $printTime = $this->printQuoteApptTime($quote);
+        $calen = new RockHopCalendar($apptTimeZone);
         $calen->getOpenings();
         return view(
             'vendor.rockhopsoftcom.nodes.227-schedule-calen',
-            [ "calen" => $calen ]
+            [
+                "calen"     => $calen,
+                "quote"     => $quote,
+                "printTime" => $printTime
+            ]
         )->render();
     }
 
@@ -107,9 +133,22 @@ class RockHopCustomPrints extends RockHopClients
             || !isset($this->sessData->dataSets["quote_request"][0]->qr_id)) {
             return '<!-- --> printAutoQuoteHeader';
         }
+        $quote = $this->sessData->dataSets["quote_request"][0];
+        $apptTimeZone = $this->getQuoteApptTimeZone($quote);
+        $printTime = '';
+        if (isset($quote->qr_appointment) && trim($quote->qr_appointment) !=''){
+            $printTime = $this->printQuoteApptTime($quote);
+            $printTime = date("n/j", $printTime) . ' at '
+                . date("g:ia", $printTime) . ' '
+                . sl()->getTimeZoneAbbr($apptTimeZone);
+        }
         return view(
             'vendor.rockhopsoftcom.nodes.230-auto-quote-header',
-            [ "quote" => $this->sessData->dataSets["quote_request"][0] ]
+            [
+                "quote"        => $quote,
+                "printTime"    => $printTime,
+                "apptTimeZone" => $apptTimeZone
+            ]
         )->render();
     }
 

@@ -1,10 +1,16 @@
 <!-- resources/views/vendor/rockhopsoftcom/nodes/
     227-schedule-calen.blade.php -->
 
-<input type="hidden" name="n227fld" id="n227FldID" autocomplete="off"
-    class="slNodeChange ntrStp" value="">
+<input type="hidden" name="n227fld" id="n227FldID"
+    class="slNodeChange ntrStp" autocomplete="off"
+    @if (isset($quote->qr_appointment)) value="{{ $quote->qr_appointment }}"
+    @else value=""
+    @endif >
 <input type="hidden" name="printTime" id="printTimeID" autocomplete="off"
-    value="">
+    @if ($printTime && intVal($printTime) > 0)
+        value="{{ date("n/j g:ia", $printTime) }}"
+    @else value=""
+    @endif >
 
 <div class="container-fluid">
     <div id="apptCurrTime" class="disNon"></div>
@@ -24,11 +30,6 @@
 
 <style>
 
-.treeWrapForm {
-    padding: 0px;
-    min-width: 100%;
-    max-width: 100%;
-}
 #pageBtns {
     text-align: center;
 }
@@ -53,9 +54,9 @@
     width: 50%;
 }
 a.apptBtn:link, a.apptBtn:active, a.apptBtn:visited, a.apptBtn:hover {
-    padding-left: 2px;
-    padding-right: 2px;
-    min-width: 55px;
+    padding-left: 4px;
+    padding-right: 4px;
+    min-width: 64px;
 }
 
 @media screen and (min-width: 576px)  {
@@ -94,11 +95,33 @@ $(document).on("change", "#apptTimeZoneMobileID", function() {
 });
 
 
+function wideSurveyScreen() {
+    if (document.getElementById("skinnySurv")) {
+        //document.getElementById("skinnySurv").style.padding="0px";
+        document.getElementById("skinnySurv").style.minWidth="100%";
+        document.getElementById("skinnySurv").style.maxWidth="100%";
+    }
+}
+function thinSurveyScreen() {
+    if (document.getElementById("skinnySurv")) {
+        //document.getElementById("skinnySurv").style.padding="0 15px";
+        document.getElementById("skinnySurv").style.minWidth="240px";
+        document.getElementById("skinnySurv").style.maxWidth="730px";
+    }
+}
+
+
 function printCurrApptTime() {
-    if (document.getElementById("n227FldID") && document.getElementById("printTimeID") && document.getElementById("apptCurrTime") && document.getElementById("apptCalenWrap") && document.getElementById("printTimeID").value != "") {
-        document.getElementById("apptCurrTime").innerHTML='<div class="pT30"><div class="col-8"><h2 class="slGreenDark">Scheduled for '+document.getElementById("printTimeID").value+'</h2><a id="apptCurrTimeClear" class="btn btn-secondary" href="javascript:;"><i class="fa fa-times mR5" aria-hidden="true"></i> Select a Different Time</a></div>';
-        document.getElementById("apptCalenWrap").style.display="none";
-        $("#apptCurrTime").fadeIn(200);
+    if (document.getElementById("n227FldID") && document.getElementById("printTimeID") && document.getElementById("apptCurrTime") && document.getElementById("apptCalenWrap") && document.getElementById("n228FldID")) {
+        if (document.getElementById("printTimeID").value != "") {
+            let zoneID = document.getElementById("n228FldID").value;
+            document.getElementById("apptCurrTime").innerHTML='<div class="pT30"><div class="col-8"><h2 class="slGreenDark">Scheduling for '+document.getElementById("printTimeID").value+' '+getTimeZoneAbbrFromId(zoneID)+'</h2><a id="apptCurrTimeClear" class="btn btn-secondary mT30" href="javascript:;"><i class="fa fa-times mR5" aria-hidden="true"></i> Select a Different Time</a></div>';
+            document.getElementById("apptCalenWrap").style.display="none";
+            $("#apptCurrTime").fadeIn(200);
+            thinSurveyScreen();
+        } else {
+            wideSurveyScreen();
+        }
     }
 }
 setTimeout( function() { printCurrApptTime(); }, 1 );
@@ -119,6 +142,7 @@ $(document).on("click", "#apptCurrTimeClear", function() {
         document.getElementById("printTimeID").value="";
         document.getElementById("apptCurrTime").style.display="none";
         $("#apptCalenWrap").fadeIn(200);
+        wideSurveyScreen();
     }
 });
 
