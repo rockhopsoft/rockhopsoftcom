@@ -152,6 +152,11 @@ class RockHopCustomPrints extends RockHopClients
         )->render();
     }
 
+    protected function printDalleDisclaim($nID)
+    {
+        return view('vendor.rockhopsoftcom.inc-dalle-disclaimer')->render();
+    }
+
     protected function printDocumentationNav($nID)
     {
         $docuNav = [

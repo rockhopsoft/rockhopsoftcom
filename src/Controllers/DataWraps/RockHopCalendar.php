@@ -124,9 +124,9 @@ class RockHopCalendar extends SurvCalendar
     public function printDayNavMobileRock()
     {
 //echo '<h3>printDayNavMobileRock() A</h3> today: ' . date("y-m-d", $this->today) . ', startDay: ' . date("y-m-d", $this->startDay) . '<br />';
-        $start = $this->addToCurrDay($this->startDay, -7);
+        // $start = $this->addToCurrDay($this->startDay, -7);
 //echo '<h3>printDayNavMobileRock() B</h3> startDay: ' . date("y-m-d", $this->startDay) . '<br />';
-        return $this->printDayNavMobile($start);
+        return $this->printDayNavMobile(); // ($start);
     }
 
 }

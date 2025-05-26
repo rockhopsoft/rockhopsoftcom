@@ -43,6 +43,8 @@ class RockHopSoftCom extends RockHopCustomPrints
             $ret .= $this->printDocumentationNav($curr->nID);
         } elseif (in_array($curr->nID, [101])) {
             $ret .= view('vendor.rockhopsoftcom.nodes.46-donate')->render();
+        } elseif (in_array($curr->nID, [237])) {
+            $ret .= $this->printDalleDisclaim($curr->nID);
 
         } elseif ($curr->nID == 36) {
             $ret .= rock()->getRockBlade('36-instruct-create-super-user');
